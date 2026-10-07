@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pocket planet</title>
+
+    <style>
+    body {
+           background-color: #090d25;
+           color: white;
+           font-family: Arial, sans-serif;
+           text-align: center;
+           padding: 30px 15px;
+           isolation: isolate;
+}
+
+        .planet {
+            width: 240px;
+            height: 240px;
+            animation: float 5s ease-in-out infinite;
+            margin: 35px auto;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #8a58ff; 
+            background: radial-gradient(
+                circle at 30% 30%, 
+                #e0c3ff,
+                #8758ff,
+                #24104f
+            );
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(-12px)
+            }
+            100% {
+                transform:translateY(0);
+               }
+            }
+            .solar-system {
+                position: relative;
+                width: 100%;
+                max-width: 360px;
+                aspect-ratio : 1;
+                margin: 40px auto;
+            }
+
+            .sun {
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 35% 30%,
+                    #fff5b5,
+                    #ffc247,
+                    #f87919
+                );
+                box-shadow: 0 0 35px #ffb347aa;
+            }
+
+            .orbit {animation: orbiting 24s linear infinite;
+                position: absolute;
+                width: 70%;
+                height: 70%;
+                top: 15%;
+                left: 15%;
+                box-sizing: border-box;
+                border: 1px solid #ffffff40;
+                border-radius: 50%;
+            }
+
+            .orbit-planet {
+                position: absolute;
+                width: 38px;
+                height: 38px;
+                top: 50%;
+                right: 0;
+                transform: translate(50%, -50%);
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 30% 30%,
+                    #e0c3ff,
+                    #8758ff,
+                    #24104f
+                );
+                box-shadow: 0 0 15px #8758ff;
+            }
+            @keyframes orbiting {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .orbit {
+                    animation: none;
+                }
+            }
+            .orbit-inner {
+                width: 40%;
+                height: 40%;
+                top: 30%;
+                left: 30%;
+                animation-duration: 15s;
+            }
+
+            .ember  {
+                width: 28px;
+                height: 28px;
+                background: radial-gradient(
+                    circle at 30% 30%,
+                    #ffd9a3,
+                    #f58232,
+                    #6d2515
+                );
+                box-shadow: 0 0 15px #f58232;
+            }
+            .orbit-outer {
+    width: 92%;
+    height: 92%;
+    top: 4%;
+    left: 4%;
+    animation-duration: 48s;
+    animation-delay: -12s;
+}
+
+.frost {
+    width: 32px;
+    height: 32px;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #e3faff,
+        #64c9f4,
+        #123269
+    );
+    box-shadow: 0 0 15px #64c9f4;
+}
+#star-field {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 4px #ffffff55;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+.star--fading {
+    background: #d8c4ff;
+    animation-name: appear;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 1; }
+}
+@keyframes appear {
+    0%, 25%, 100% { opacity: 0; }
+    60% { opacity: 0.9; }
+}
+
+.shooting-star {
+    position: absolute;
+    left: 10%;
+    top: 8%;
+    width: 100px;
+    height: 2px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, transparent, #38bdf8, #dff6ff);
+    filter: drop-shadow(0 0 6px #38bdf8);
+    opacity: 0;
+    animation: shoot 5s linear infinite;
+}
+@keyframes shoot {
+    10%, 70% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(35deg);
+    }
+    72% {
+        opacity: 1;
+    }
+    85%, 100% {
+        opacity: 0;
+        transform: translate(60vw, 42vw) rotate(35deg);
+    }
+}
+.star--sparkle::before,
+.star--sparkle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #e3faff,
+        white,
+        #e3faff,
+        transparent
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 5px #bce7ff;
+}
+
+.star--sparkle::before {
+    width: 2px;
+    height: 12px;
+}
+
+.star--sparkle::after {
+    width: 12px;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #e3faff,
+        white,
+        #e3faff,
+        transparent
+    );
+}
+@media (prefers-reduced-motion: reduce) {
+    .star {
+        animation: none;
+        opacity: 0.6;
+    }
+
+    .shooting-star {
+        display: none;
+    }
+}
+.planet-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.planet-buttons button {
+    padding: 10px 18px;
+    background: #182044;
+    color: white;
+    border: 1px solid #8895cc;
+    border-radius: 20px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.planet-buttons button:hover {
+    background: #303d70;
+}
+
+.planet-buttons button:focus {
+    outline: 2px solid #aeeaff;
+    outline-offset: 4px;
+}
+#customizer {
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 24px;
+    background: #121936;
+    border: 1px solid #58638e;
+    border-radius: 20px;
+}
+
+#back-button {
+    padding: 10px 16px;
+    background: #26345e;
+    color: white;
+    border: 1px solid #8895cc;
+    border-radius: 12px;
+    font: inherit;
+    cursor: pointer;
+}
+#planet-preview {
+    width: 100%;
+    height: 280px;
+    margin: 20px auto;
+}
+
+#planet-preview canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#name-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 12px;
+    background: #090d25;
+    color: white;
+    border: 1px solid #8895cc;
+    border-radius: 10px;
+    font: inherit;
+}
+#color-input {
+    display: block;
+    width: 60px;
+    height: 40px;
+    margin: 10px auto;
+    padding: 3px;
+    background: #090d25;
+    border: 1px solid #8895cc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.shooting-star-bottom {
+    left: auto;
+    top: auto;
+    right: 2%;
+    bottom: 10%;
+    animation: shoot-from-bottom 7s linear infinite;
+}
+
+@keyframes shoot-from-bottom {
+    0%, 55% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(215deg);
+    }
+
+    57% {
+        opacity: 1;
+    }
+
+    80%, 100% {
+        opacity: 0;
+        transform: translate(-60vw, -42vw) rotate(215deg);
+    }
+}
+ 
+/* RING UPGRADE: keep each small planet upright while its orbit turns. */
+.orbit { --orbit-duration: 24s; --orbit-delay: 0s; }
+.orbit-inner { --orbit-duration: 15s; }
+.orbit-outer { --orbit-duration: 48s; --orbit-delay: -12s; }
+.orbit-planet {
+    animation: counter-orbit var(--orbit-duration) linear infinite;
+    animation-delay: var(--orbit-delay);
+    --ring-color: #e8c99b;
+    --ring-light: #f3e3c9;
+    --ring-dark: #9b845f;
+}
+@keyframes counter-orbit {
+    from { transform: translate(50%, -50%) rotate(0deg); }
+    to { transform: translate(50%, -50%) rotate(-360deg); }
+}
+.planet-surface {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    background: inherit;
+}
+/* The upper half is behind the surface; the lower half is in front. */
+.orbit-planet.has-ring::before,
+.orbit-planet.has-ring::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 190%;
+    height: 78%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(ellipse closest-side,
+        transparent 58%,
+        var(--ring-dark) 59% 64%,
+        var(--ring-color) 65% 69%,
+        transparent 70% 73%,
+        var(--ring-light) 74% 79%,
+        var(--ring-color) 80% 89%,
+        var(--ring-dark) 90% 96%,
+        transparent 97%);
+}
+.orbit-planet.has-ring::before {
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+.orbit-planet.has-ring::after {
+    z-index: 3;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+#ring-color-input {
+    display: block;
+    width: 60px;
+    height: 40px;
+    margin: 10px auto 18px;
+    padding: 3px;
+    background: #090d25;
+    border: 1px solid #8895cc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+    .orbit-planet { animation: none; }
+    .orbit-outer { transform: rotate(90deg); }
+    .orbit-outer .orbit-planet {
+        transform: translate(50%, -50%) rotate(-90deg);
+    }
+}
+#planet-preview canvas {
+    cursor: grab;
+    touch-action: none;
+}
+
+#planet-preview canvas:active {
+    cursor: grabbing;
+}
+#ring-style-input {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    margin: 10px auto 20px;
+    padding: 10px 12px;
+    background: #090d25;
+    color: white;
+    border: 1px solid #8895cc;
+    border-radius: 10px;
+    font: inherit;
+}
+
+/* A narrow outer ring in the solar system. */
+.orbit-planet.has-ring[data-ring-style="thin"]::before,
+.orbit-planet.has-ring[data-ring-style="thin"]::after {
+    background: radial-gradient(
+        ellipse closest-side,
+        transparent 88%,
+        var(--ring-dark) 89%,
+        var(--ring-light) 92%,
+        var(--ring-color) 95%,
+        transparent 97%
+    );
+}
+/* Two rings separated by a wide gap. */
+.orbit-planet.has-ring[data-ring-style="double"]::before,
+.orbit-planet.has-ring[data-ring-style="double"]::after {
+    background: radial-gradient(
+        ellipse closest-side,
+        transparent 65%,
+        var(--ring-dark) 66%,
+        var(--ring-light) 69%,
+        var(--ring-color) 72%,
+        transparent 73% 88%,
+        var(--ring-dark) 89%,
+        var(--ring-light) 92%,
+        var(--ring-color) 95%,
+        transparent 97%
+    );
+}
+.menu-moon {
+    position: absolute;
+    left: 145%;
+    top: 10%;
+    width: 18%;
+    height: 18%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #f5f6fa,
+        #a4adbd 55%,
+        #414959
+    );
+    box-shadow: 0 0 5px #c4c9d244;
+    z-index: 4;
+    pointer-events: none;
+}
+.menu-moon {
+    left: 50%;
+    top: 50%;
+    --moon-distance: 40px;
+    animation: moon-orbit 12s linear infinite;
+}
+
+.ember .menu-moon {
+    --moon-distance: 30px;
+}
+
+.frost .menu-moon {
+    --moon-distance: 35px;
+}
+
+@keyframes moon-orbit {
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg)
+            translateX(var(--moon-distance))
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg)
+            translateX(var(--moon-distance))
+            rotate(-360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-moon {
+        animation: none;
+        transform:
+            translate(-50%, -50%)
+            translateX(var(--moon-distance));
+    }
+}
+</style>
+
+</head> 
+<body>
+    <div id="star-field" aria-hidden="true">
+        <span class="shooting-star"></span>
+        <span class="shooting-star shooting-star-bottom"></span>
+</div>
+  <h1>Pocket Planet</h1>
+  <p>A tiny universe, made by me.</p>
+
+<div class="solar-system" id="solar-system">
+    <div class="sun"></div>
+
+    <div class="orbit">
+        <div class="orbit-planet" id="rog-planet"><span class="planet-surface"></span></div>
+    </div>
+
+    <div class="orbit orbit-inner">
+        <div class="orbit-planet ember" id="ember-planet"><span class="planet-surface"></span></div>
+    </div>
+
+    <div class="orbit orbit-outer">
+        <div class="orbit-planet frost" id="frost-planet"><span class="planet-surface"></span></div>
+    </div>
+</div>
+
+<div id="planet-selection">
+    <p>Choose a world to make your own.</p>
+
+    <div class="planet-buttons">
+        <button type="button" data-planet="rog">Rog</button>
+        <button type="button" data-planet="ember">Ember</button>
+        <button type="button" data-planet="frost">Frost</button>
+    </div>
+</div>
+
+<section id="customizer" hidden aria-labelledby="planet-name">
+    <h2 id="planet-name">Planet Rog</h2>
+    <p id="planet-description">A quiet world with purple skies.</p>
+    <label for="name-input">Planet name</label>
+<input
+    type="text"
+    id="name-input"
+    maxlength="30"
+    autocomplete="off"
+>
+<div id="planet-preview"
+     role="img"
+     aria-label="3D preview of your selected planet"></div>
+<p>
+    <label for="ring-input">
+        <input type="checkbox" id="ring-input">
+        Add a ring
+    </label>
+</p>
+
+<label for="color-input">Planet colour</label>
+<input type="color" id="color-input" value="#8758ff">
+<label for="ring-style-input">Ring style</label>
+<select id="ring-style-input">
+    <option value="bands">Saturn bands</option>
+    <option value="thin">Thin ring</option>
+    <option value="double">Double</option>
+</select>
+<!-- RING UPGRADE: this picker is separate from the planet colour. -->
+<label for="ring-color-input">Ring colour</label>
+<input type="color" id="ring-color-input" value="#e8c99b">     
+<p>
+    <label for="moon-input">
+        <input type="checkbox" id="moon-input">
+        Add a moon
+    </label>
+</p>
+    <button type="button" id="back-button">
+        Back to solar system
+    </button>
+</section>
+
+ <script>
+    const starField = document.getElementById("star-field");
+    const starCount = 80;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement("span");
+        star.className = "star";
+
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+
+        const size = 1 + Math.random() * 2;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+
+        star.style.animationDuration =
+            2 + Math.random() * 3 + "s";
+
+        star.style.animationDelay =
+            -Math.random() * 8 + "s";
+
+        if (i % 4 === 0) {
+            star.classList.add("star--fading");
+        }
+if (i % 8 === 1) {
+    star.classList.add("star--sparkle");
+}
+        starField.appendChild(star);
+    }
+const planets = {
+    rog: {
+        name: "Planet Rog",
+        description: "A quiet world with purple skies."
+    },
+    ember: {
+        name: "Planet Ember",
+        description: "A fiery world with glowing volcanic landscapes."
+    },
+    frost: {
+        name: "Planet Frost",
+        description: "An icy world beneath pale blue skies."
+    }
+};
+
+const planetName = document.getElementById("planet-name");
+const planetDescription =
+    document.getElementById("planet-description");
+
+const planetButtons =
+    document.querySelectorAll("[data-planet]");
+
+const solarSystem = document.getElementById("solar-system");
+const planetSelection = document.getElementById("planet-selection");
+const customizer = document.getElementById("customizer");
+const backButton = document.getElementById("back-button");
+
+let lastSelectedButton;
+let selectedPlanetKey = "rog";
+const nameInput = document.getElementById("name-input");
+
+planetButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const selectedPlanet = planets[button.dataset.planet];
+        selectedPlanetKey = button.dataset.planet;
+nameInput.value = selectedPlanet.name;
+
+        planetName.textContent = selectedPlanet.name;
+        planetDescription.textContent = selectedPlanet.description;
+
+        lastSelectedButton = button;
+
+        solarSystem.hidden = true;
+        planetSelection.hidden = true;
+        customizer.hidden = false;
+
+        backButton.focus();
+    });
+});
+
+backButton.addEventListener("click", function () {
+    customizer.hidden = true;
+    solarSystem.hidden = false;
+    planetSelection.hidden = false;
+
+    lastSelectedButton.focus();
+});
+</script>
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+    }
+}
+</script> 
+<script type="module">
+import * as THREE from "three";
+import { TrackballControls } from
+    "three/addons/controls/TrackballControls.js";
+
+const preview = document.getElementById("planet-preview");
+const colorInput = document.getElementById("color-input");
+const ringInput = document.getElementById("ring-input");
+const ringColorInput = document.getElementById("ring-color-input");
+const ringStyleInput =
+    document.getElementById("ring-style-input");
+
+
+    const planetRingStyles = {
+        rog: "bands",
+        ember: "bands",
+        frost: "bands"
+    };
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+preview.appendChild(renderer.domElement);
+// Start the camera in front of the planet.
+camera.position.set(0, 0, 4.7);
+
+const controls = new TrackballControls(
+    camera,
+    renderer.domElement
+);
+
+controls.rotateSpeed = 2.5;
+controls.noZoom = true;
+controls.noPan = true;
+controls.staticMoving = true;
+
+// Draw the new view whenever the user rotates.
+controls.addEventListener("change", function () {
+    renderer.render(scene, camera);
+});
+
+// Double-click to return to the starting view.
+renderer.domElement.addEventListener("dblclick", function () {
+    controls.reset();
+    drawPreview();
+});
+const material = new THREE.MeshStandardMaterial({
+    color: "#8758ff", roughness: 0.8, metalness: 0
+});
+const planetMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 48, 32), material
+);
+planetMesh.castShadow = true;
+planetMesh.receiveShadow = true;
+scene.add(planetMesh);
+const moonInput = document.getElementById("moon-input");
+
+const planetMoons = {
+    rog: false,
+    ember: false,
+    frost: false
+};
+
+const moonMaterial = new THREE.MeshStandardMaterial({
+    color: "#c4c9d2",
+    roughness: 1,
+    metalness: 0
+});
+
+const moonMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.18, 32, 24),
+    moonMaterial
+);
+
+moonMesh.position.set(2.1, 0.5, 0);
+moonMesh.castShadow = true;
+moonMesh.receiveShadow = true;
+moonMesh.visible = false;
+
+scene.add(moonMesh);
+
+// RING UPGRADE: many narrow bands, with a wider gap between two sections.
+// This group retains the name ringMesh so the on/off logic stays familiar.
+const ringMesh = new THREE.Group();
+const ringBands = [];
+for (let i = 0; i < 40; i++) {
+    if (i === 24 || i === 25) continue;
+    const innerRadius = 1.15 + i * 0.014;
+    const shade = 0.58 + 0.32 * (Math.sin(i * 1.7) + 1) / 2;
+    const bandMaterial = new THREE.MeshStandardMaterial({
+        color: new THREE.Color("#e8c99b").multiplyScalar(shade),
+        side: THREE.DoubleSide,
+        roughness: 0.95
+    });
+    const band = new THREE.Mesh(
+        new THREE.RingGeometry(innerRadius, innerRadius + 0.011, 128),
+        bandMaterial
+    );
+    band.castShadow = true;
+    band.receiveShadow = true;
+    ringMesh.add(band);
+ringBands.push({
+    mesh: band,
+    material: bandMaterial,
+    shade: shade,
+    index: i
+});
+}
+// Negative X tilt places the lower half in front; Z tilts the whole ring.
+ringMesh.rotation.order = "ZXY";
+ringMesh.rotation.set(-1.12, 0, 0.35);
+ringMesh.visible = false;
+planetMesh.add(ringMesh);
+
+scene.add(new THREE.AmbientLight(0xffffff, 1.1));
+const sunlight = new THREE.DirectionalLight(0xfff4e6, 2.2);
+sunlight.position.set(-3, 3, 4);
+sunlight.castShadow = true;
+sunlight.shadow.mapSize.set(1024, 1024);
+Object.assign(sunlight.shadow.camera, {
+    left: -2.5, right: 3.5, top: 2.5, bottom: -2.5,
+    near: 0.1, far: 15
+});
+sunlight.shadow.normalBias = 0.02;
+sunlight.shadow.bias = -0.0002;
+scene.add(sunlight);
+
+const previewColors = { rog: "#8758ff", ember: "#f58232", frost: "#64c9f4" };
+const planetRings = { rog: false, ember: false, frost: false };
+const ringColors = { rog: "#e8c99b", ember: "#e8c99b", frost: "#e8c99b" };
+
+function drawPreview() {
+    const width = preview.clientWidth;
+    const height = preview.clientHeight;
+
+    // Wait until the customization panel is visible.
+    if (width === 0 || height === 0) return;
+
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+
+    // Leave extra room when the moon is enabled.
+    const viewDistance =
+        planetMoons[selectedPlanetKey] ? 6.5 : 4.7;
+
+    camera.position.setLength(
+        viewDistance / Math.min(camera.aspect, 1)
+    );
+
+    camera.updateProjectionMatrix();
+    controls.handleResize();
+    renderer.render(scene, camera);
+}
+
+function updateMenuPlanet(key) {
+    const smallPlanet = document.getElementById(key + "-planet");
+    let menuMoon = smallPlanet.querySelector(".menu-moon");
+
+// Create this planet's moon only once.
+if (!menuMoon) {
+    menuMoon = document.createElement("span");
+    menuMoon.className = "menu-moon";
+    menuMoon.setAttribute("aria-hidden", "true");
+    smallPlanet.appendChild(menuMoon);
+}
+
+// Match the checkbox setting for this planet.
+menuMoon.hidden = !planetMoons[key];
+    const color = previewColors[key];
+    smallPlanet.style.background = `radial-gradient(
+        circle at 30% 30%, #ffffff, ${color}, #090d25)`;
+    smallPlanet.style.boxShadow = `0 0 12px ${color}`;
+    smallPlanet.classList.toggle("has-ring", planetRings[key]);
+    smallPlanet.dataset.ringStyle = planetRingStyles[key];
+    const ringColor = new THREE.Color(ringColors[key]);
+    smallPlanet.style.setProperty("--ring-color", ringColors[key]);
+    smallPlanet.style.setProperty("--ring-light",
+        "#" + ringColor.clone().lerp(new THREE.Color("#ffffff"), 0.3).getHexString());
+    smallPlanet.style.setProperty("--ring-dark",
+        "#" + ringColor.clone().multiplyScalar(0.5).getHexString());
+}
+function updateRingStyle(key) {
+    const style = planetRingStyles[key];
+
+    for (const band of ringBands) {
+        if (style === "thin") {
+            // Show only the outer bands.
+            band.mesh.visible = band.index >= 30;
+        } else if (style === "double") {
+            // Show inner and outer bands, leaving a gap.
+            band.mesh.visible =
+                band.index < 8 || band.index >= 30;
+        } else {
+            // Show all the original Saturn bands.
+            band.mesh.visible = true;
+        }
+    }
+}
+
+function updateRingColor(color) {
+    for (const band of ringBands) {
+        band.material.color.set(color).multiplyScalar(band.shade);
+    }
+}
+
+function showSelectedPreview(key) {    ringStyleInput.value = planetRingStyles[key];
+    updateRingStyle(key);
+
+
+    moonInput.checked = planetMoons[key];
+    moonMesh.visible = planetMoons[key];
+
+    colorInput.value = previewColors[key];
+    material.color.set(previewColors[key]);
+    ringInput.checked = planetRings[key];
+    ringMesh.visible = planetRings[key];
+    ringColorInput.value = ringColors[key];
+    updateRingColor(ringColors[key]);
+    updateMenuPlanet(key);
+    drawPreview();
+}
+
+document.querySelectorAll("[data-planet]").forEach(function (button) {
+    button.addEventListener("click", function () {
+        showSelectedPreview(button.dataset.planet);
+    });
+});
+const resizeObserver = new ResizeObserver(drawPreview);
+resizeObserver.observe(preview);
+
+nameInput.addEventListener("input", function () {
+    const newName = nameInput.value.trim() || "Unnamed planet";
+
+    planets[selectedPlanetKey].name = newName;
+    planetName.textContent = newName;
+
+    const planetButton = document.querySelector(
+        `.planet-buttons button[data-planet="${selectedPlanetKey}"]`
+    );
+
+    planetButton.textContent = newName;
+});
+
+colorInput.addEventListener("input", function () {
+    previewColors[selectedPlanetKey] = colorInput.value;
+    material.color.set(colorInput.value);
+    updateMenuPlanet(selectedPlanetKey);
+    drawPreview();
+});
+
+ringInput.addEventListener("change", function () {
+    planetRings[selectedPlanetKey] = ringInput.checked;
+    ringMesh.visible = ringInput.checked;
+    updateMenuPlanet(selectedPlanetKey);
+    drawPreview();
+});
+
+// RING UPGRADE: ring colour updates both views, independently of planet colour.
+ringColorInput.addEventListener("input", function () {
+    ringColors[selectedPlanetKey] = ringColorInput.value;
+    updateRingColor(ringColorInput.value);
+    updateMenuPlanet(selectedPlanetKey);
+    drawPreview();
+});
+
+// Settings are per planet for this session; browser saving is a later lesson.
+showSelectedPreview(selectedPlanetKey);
+const reducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function updateRotation(time = 0) {
+    requestAnimationFrame(updateRotation);
+
+    if (customizer.hidden || document.hidden) return;
+
+    controls.update();
+
+    if (moonMesh.visible && !reducedMotion.matches) {
+        // One complete orbit every 12 seconds.
+        const angle = (time / 12000) * Math.PI * 2;
+
+        moonMesh.position.set(
+            Math.cos(angle) * 2.1,
+            0.5,
+            Math.sin(angle) * 2.1
+        );
+
+        renderer.render(scene, camera);
+    }
+}
+
+updateRotation();
+moonInput.addEventListener("change", function () {
+    planetMoons[selectedPlanetKey] = moonInput.checked;
+    moonMesh.visible = moonInput.checked;
+
+    updateMenuPlanet(selectedPlanetKey);
+    drawPreview();
+});
+ringStyleInput.addEventListener("change", function () {
+    planetRingStyles[selectedPlanetKey] =
+        ringStyleInput.value;
+
+    updateRingStyle(selectedPlanetKey);
+    updateMenuPlanet(selectedPlanetKey);
+    drawPreview();
+});
+</script>
+</body>
+</html>
