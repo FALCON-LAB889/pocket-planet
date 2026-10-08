@@ -22,4 +22,4 @@ An internet connection is needed to load Three.js.
 
 ## Next improvements
 
-Planet surface designs, a nebula background and saved settings.
+Planet surface designs, a nebula background and saved settings
