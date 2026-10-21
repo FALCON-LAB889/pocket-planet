@@ -1,13 +1,8 @@
 POCKET-PLANET
-
 Build a world. Give it an atmosphere. Leave your mark.
-
 Pocket Planet is an interactive space sandbox where you can customize three fictional worlds, inspect them in 3D, experiment with meteor impacts, and explore real space imagery and ISS video streams.
-
 It began as a small CSS solar system and grew into a browser project combining procedural textures, 3D rendering, interactive experiments, and real astronomy content.
-
 Built for Hack Club StarDance with HTML, CSS, JavaScript, and Three.js.
-
 Features · Run locally · Controls · How it works · Credits
 
 🚀 **[Launch Pocket Planet](https://falcon-lab889.github.io/pocket-planet/)**<!-- Add a verified live-demo link and a current screenshot here before sharing. -->
@@ -281,5 +276,5 @@ External images, fonts, broadcasts, and libraries retain their respective licenc
 Feedback
 
 Found a bug? Open an issue with the browser and device you used, the steps to reproduce it, and any browser-console error. Suggestions that improve exploration, accessibility, or performance are welcome.
-<img width="1600" height="855" alt="Screenshot 2026-10-21 160031" src="https://github.com/user-attachments/assets/4d5b00e3-4d7f-4d45-96c5-f7755659fdd3" />
-<img width="1446" height="860" alt="Screenshot 2026-10-21 160049" src="https://github.com/user-attachments/assets/6598f67b-c8a3-40c2-bd74-a3eed2eca34e" />
+🚀 **[Launch Pocket Planet](https://falcon-lab889.github.io/pocket-planet/)**<!-- Add a verified live-demo link and a current screenshot here before sharing. -->
+
