@@ -1,4 +1,4 @@
-Pocket Planet
+POCKET-PLANET
 
 Build a world. Give it an atmosphere. Leave your mark.
 
