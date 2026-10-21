@@ -1,7 +1,5 @@
 import * as THREE from "three";
-import { TrackballControls } from "three/addons/controls/TrackballControls.js";
-
-// Background Star Generator
+import { TrackballControls } from "three/addons/controls/TrackballControls.js
 function generateStarfield() {
   const container = document.getElementById("starfield-bg");
   if (!container) return;
@@ -19,8 +17,6 @@ function generateStarfield() {
   }
 }
 generateStarfield();
-
-// Procedural Canvas Texture Generator
 function createProceduralTexture(type, baseColorHex) {
   const canvas = document.createElement("canvas");
   canvas.width = 512;
@@ -64,8 +60,6 @@ function createProceduralTexture(type, baseColorHex) {
   texture.needsUpdate = true;
   return texture;
 }
-
-// Global POCKET-PLANET State
 const planetData = {
   rog: {
     name: "Planet ROG",
@@ -113,7 +107,6 @@ const customizer = document.getElementById("customizer");
 const planetName = document.getElementById("planet-name");
 const planetDesc = document.getElementById("planet-description");
 
-// 3D Viewport Setup
 const previewContainer = document.getElementById("planet-preview");
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
@@ -127,7 +120,6 @@ if (previewContainer) {
   previewContainer.appendChild(renderer.domElement);
 }
 
-// 3D Meshes
 const planetMaterial = new THREE.MeshStandardMaterial({
   color: "#8758ff",
   roughness: 0.75,
@@ -155,19 +147,15 @@ const moonMesh = new THREE.Mesh(new THREE.SphereGeometry(0.22, 32, 32), moonMate
 moonMesh.visible = false;
 scene.add(moonMesh);
 
-// Lighting
 const primaryLight = new THREE.DirectionalLight(0xffffff, 2.2);
 primaryLight.position.set(3, 3, 4);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
 scene.add(primaryLight, ambientLight);
-
-// Orbit Controls
 const controls = new TrackballControls(camera, renderer.domElement);
 controls.noZoom = true;
 controls.noPan = true;
 controls.rotateSpeed = 2.0;
 
-// Updates Solar System 2D Map Display Live
 function updateSolarSystemMap() {
   Object.keys(planetData).forEach((key) => {
     const data = planetData[key];
@@ -238,7 +226,6 @@ function updatePlanetRender() {
   updateSolarSystemMap();
 }
 
-// Navigation Events
 function bindSelectionEvents() {
   const triggers = document.querySelectorAll(".orbit-planet, .planet-select-btn");
   triggers.forEach((btn) => {
@@ -295,7 +282,6 @@ function openPlanetEditor(key) {
 
 bindSelectionEvents();
 
-// Controls Event Listeners
 const colorIn = document.getElementById("color-input");
 if (colorIn) {
   colorIn.addEventListener("input", (e) => {
@@ -322,7 +308,6 @@ if (nameIn) {
   });
 }
 
-// Ring Inputs
 const ringIn = document.getElementById("ring-input");
 if (ringIn) {
   ringIn.addEventListener("change", (e) => {
@@ -347,7 +332,6 @@ if (ringColorIn) {
   });
 }
 
-// Moon Inputs
 const moonIn = document.getElementById("moon-input");
 if (moonIn) {
   moonIn.addEventListener("change", (e) => {
@@ -382,7 +366,6 @@ if (resetCamBtn) {
   });
 }
 
-// Export Postcard
 const exportBtn = document.getElementById("download-planet-button");
 const downloadStatus = document.getElementById("download-status");
 if (exportBtn) {
@@ -401,7 +384,6 @@ if (exportBtn) {
   });
 }
 
-// Export & Import Backup Functionality
 const exportBackupBtn = document.getElementById("download-backup-button");
 const restoreFileInput = document.getElementById("restore-file-input");
 const restoreBackupBtn = document.getElementById("restore-backup-button");
@@ -453,7 +435,6 @@ if (restoreFileInput && restoreBackupBtn) {
   });
 }
 
-// Orbit Controls Freeze Toggler
 const pauseBtn = document.getElementById("pause-system-button");
 const solarSys = document.getElementById("solar-system");
 if (pauseBtn && solarSys) {
@@ -463,7 +444,6 @@ if (pauseBtn && solarSys) {
   });
 }
 
-// Animation Loop
 function animateScene() {
   requestAnimationFrame(animateScene);
   controls.update();
@@ -482,8 +462,6 @@ function animateScene() {
 }
 animateScene();
 updateSolarSystemMap();
-
-// Modals
 const issDialog = document.getElementById("iss-dialog");
 const issBtn = document.getElementById("iss-button");
 const missionIssBtn = document.getElementById("mission-iss-button");
