@@ -281,3 +281,5 @@ External images, fonts, broadcasts, and libraries retain their respective licenc
 Feedback
 
 Found a bug? Open an issue with the browser and device you used, the steps to reproduce it, and any browser-console error. Suggestions that improve exploration, accessibility, or performance are welcome.
+<img width="1600" height="855" alt="Screenshot 2026-10-21 160031" src="https://github.com/user-attachments/assets/4d5b00e3-4d7f-4d45-96c5-f7755659fdd3" />
+<img width="1446" height="860" alt="Screenshot 2026-10-21 160049" src="https://github.com/user-attachments/assets/6598f67b-c8a3-40c2-bd74-a3eed2eca34e" />
