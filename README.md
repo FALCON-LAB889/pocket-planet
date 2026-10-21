@@ -10,7 +10,7 @@ Built for Hack Club StarDance with HTML, CSS, JavaScript, and Three.js.
 
 Features · Run locally · Controls · How it works · Credits
 
-<!-- Add a verified live-demo link and a current screenshot here before sharing. -->
+🚀 **[Launch Pocket Planet](https://falcon-lab889.github.io/pocket-planet/)**<!-- Add a verified live-demo link and a current screenshot here before sharing. -->
 
 Features
 
