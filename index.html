@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pocket Planet — My Space Sandbox</title>
+    <meta name="theme-color" content="#070e1b" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./script.js"></script>
+  </head>
+  <body>
+    <div id="star-field" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#home-view">POCKET PLANET</a>
+      <a id="guide-link" class="quiet-link" href="#explorer-guide">Quick Guide ↗</a>
+    </header>
+
+    <main id="main-content">
+      <section id="home-view">
+        <header class="hero">
+          <p class="eyebrow">MY SPACE SANDBOX</p>
+          <h1>Pocket Planet.</h1>
+          <p>I built a little 3D space project. Pick a world below to tweak it!</p>
+        </header>
+
+        <div class="home-grid">
+          <section class="system-stage panel">
+            <header class="stage-header">
+              <h2>My Solar System</h2>
+              <button type="button" id="pause-system-button" class="button-small">Freeze orbits</button>
+            </header>
+            
+            <div class="solar-system" id="solar-system">
+              <button type="button" id="iss-button" class="floating-iss">
+                <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/astro/universe/2023/09/SpaceStation-1.png?fit=clip&w=600" alt="ISS" />
+                <span>ISS Cam</span>
+              </button>
+              <div class="sun"></div>
+              <div class="orbit"><div class="orbit-planet" id="rog-planet" data-planet="rog"><span class="planet-surface"></span><span class="planet-label">Planet Rog</span></div></div>
+              <div class="orbit orbit-inner"><div class="orbit-planet ember" id="ember-planet" data-planet="ember"><span class="planet-surface"></span><span class="planet-label">Planet Ember</span></div></div>
+              <div class="orbit orbit-outer"><div class="orbit-planet frost" id="frost-planet" data-planet="frost"><span class="planet-surface"></span><span class="planet-label">Planet Frost</span></div></div>
+            </div>
+
+            <div id="planet-selection">
+              <p class="explorer-prompt">Click any planet above to customize it.</p>
+            </div>
+          </section>
+
+          <aside class="mission-list">
+            <article class="mission-card panel">
+              <h3>01 / Design Worlds</h3>
+              <p>Tweak surface textures, change colors, build ring systems, and orbit moons.</p>
+            </article>
+            <article class="mission-card panel earth-card">
+              <h3>02 / Watch Live Earth</h3>
+              <p>Stream real-time footage direct from cameras mounted on the ISS.</p>
+              <button type="button" id="mission-iss-button" class="text-button">Open ISS stream ↗</button>
+            </article>
+            <article class="mission-card panel deep-card">
+              <h3>03 / Webb Telescope</h3>
+              <p>Explore 8 high-res space captures from the James Webb Space Telescope.</p>
+              <button type="button" id="mission-telescope-button" class="text-button">Open Webb gallery ↗</button>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="customizer" hidden>
+        <header class="editor-header">
+          <div>
+            <h2 id="planet-name">Planet Rog</h2>
+            <p id="planet-description">A custom planet build.</p>
+          </div>
+          <button type="button" id="back-button">Back to system ↗</button>
+        </header>
+
+        <div class="editor-layout">
+          <div class="preview-panel panel">
+            <div id="immersive-stage">
+              <div id="planet-preview"></div>
+            </div>
+            <div class="preview-actions">
+              <button type="button" id="reset-view-button">Center view</button>
+              <button type="button" id="download-planet-button" class="button-primary">Save image</button>
+            </div>
+            <p id="download-status" class="preview-hint" role="status"></p>
+          </div>
+
+          <div class="settings-panel panel">
+            <fieldset class="editor-fieldset">
+              <legend>01 / Base Appearance</legend>
+              <label for="name-input">Planet Title</label>
+              <input type="text" id="name-input" maxlength="30" />
+              <div class="field-row">
+                <label for="color-input">Color Accent</label>
+                <input type="color" id="color-input" value="#8758ff" />
+              </div>
+              <label for="surface-input">Surface Texture</label>
+              <select id="surface-input">
+                <option value="rocky">Rocky Craters</option>
+                <option value="gas">Gas Giant Bands</option>
+                <option value="frozen">Frozen Ice Sheets</option>
+              </select>
+            </fieldset>
+
+            <fieldset class="editor-fieldset">
+              <legend>02 / Rings & Moons</legend>
+              <label class="toggle-row"><span>Add Rings</span><input type="checkbox" id="ring-input" /></label>
+              <select id="ring-style-input">
+                <option value="bands">Saturn Bands</option>
+                <option value="thin">Thin Dust Band</option>
+                <option value="double">Double Split Ring</option>
+              </select>
+              <div class="field-row">
+                <label for="ring-color-input">Ring Color</label>
+                <input type="color" id="ring-color-input" value="#e8c99b" />
+              </div>
+              <label class="toggle-row"><span>Add Moon</span><input type="checkbox" id="moon-input" /></label>
+              <div id="moon-controls">
+                <label for="moon-color-input">Moon Color</label>
+                <input type="color" id="moon-color-input" value="#c4c9d2" />
+                <label for="moon-size-input">Moon Size</label>
+                <input type="range" id="moon-size-input" min="0.6" max="1.6" step="0.1" value="1" />
+                <output id="moon-size-value">1.0x</output>
+              </div>
+            </fieldset>
+
+            <fieldset class="editor-fieldset">
+              <legend>03 / Asteroid Impacts</legend>
+              <button type="button" id="meteor-aim-button">Pick impact spot</button>
+              <button type="button" id="meteor-launch-button" disabled>Launch Meteor!</button>
+              <p id="meteor-status" class="field-help">Click on the 3D globe to aim your target.</p>
+            </fieldset>
+            <p id="save-status" class="save-status">Saved locally.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="universe-backup">
+        <h2>Save & Backup Data</h2>
+        <div class="backup-actions">
+          <button type="button" id="download-backup-button">Export Backup (.json)</button>
+          <div class="restore-controls">
+            <input type="file" id="restore-file-input" accept=".json" />
+            <button type="button" id="restore-backup-button" disabled>Load Backup File</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="iss-dialog">
+      <header class="iss-heading">
+        <h2>Live ISS Stream</h2>
+        <form method="dialog"><button>Close</button></form>
+      </header>
+      <div class="iss-screen"><div id="iss-video"></div></div>
+      <p id="iss-status">Connecting to live feed…</p>
+      <select id="iss-provider">
+        <option value="sen">Sen Stream</option>
+        <option value="nasa">NASA Official Stream</option>
+      </select>
+    </dialog>
+
+    <dialog id="telescope-dialog">
+      <header class="telescope-heading">
+        <h2>Webb Space Gallery</h2>
+        <form method="dialog"><button>Close</button></form>
+      </header>
+      <select id="telescope-target">
+        <option value="carina">Cosmic Cliffs</option>
+        <option value="pillars">Pillars of Creation</option>
+        <option value="cartwheel">Cartwheel Galaxy</option>
+        <option value="deep-field">Webb Deep Field</option>
+      </select>
+      <figure>
+        <img id="telescope-image" alt="Space image" />
+        <figcaption id="telescope-caption"></figcaption>
+      </figure>
+    </dialog>
+
+    <button type="button" id="telescope-button" class="space-telescope">Webb Shots ↗</button>
+  </body>
+</html>
