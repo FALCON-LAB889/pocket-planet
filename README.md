@@ -1,43 +1,30 @@
 # Pocket Planet
 
-An interactive space website built with HTML, CSS, JavaScript and Three.js.
+A tiny universe, made by me.
 
-[Write one sentence explaining why you wanted to build it.]
+Pocket Planet started as a sun with three little planets going around it. I wanted to make the planets feel more personal, so you can pick one, give it a name, and change how it looks. The small planet in the solar system changes along with the 3D preview.
 
 ## Try it
 
-https://falcon-lab889.github.io/pocket-planet/
+1. Keep `index.html`, `style.css`, and `script.js` in the same folder.
+2. Open the folder in VS Code and run `index.html` using Live Server.
+3. Stay connected to the internet so Three.js can load for the 3D preview.
+4. Click Rog, Ember, or Frost. Drag the 3D planet to see it from different sides.
 
-## Features
+The Flight Handbook on the page has a quick guide too.
 
-- Customizable planets with colours, surfaces, rings and moons.
-- A 3D preview you can rotate.
-- An ISS video viewer and space image gallery.
+## What you can change
 
-## Run locally
+- Rename each planet and pick its colour.
+- Switch between smooth, rocky, and banded surfaces.
+- Add a ring, choose one of three ring styles, and change its colour.
+- Add a moon and adjust its size and colour.
+- Return to the solar system to see your changes on the smaller planets.
 
-1. Download or clone this repository.
-2. Open the folder in VS Code.
-3. Install the Live Server extension.
-4. Right-click index.html and select “Open with Live Server”.
+Your choices are stored in your browser on that device. The **Save my planet** button confirms the save; changing a control also saves it. Clearing the site's browser data will remove saved planets.
 
-An internet connection is needed for external libraries,
-images and video providers.
+I also added twinkling stars, two shooting stars, and a pause-on-hover effect to make the planets easier to choose with a mouse. The orbits are for fun, not an accurate model of a real solar system.
 
-## What I learned
+## Built with
 
-[Name one piece of code you understand and explain what it does.]
-
-[Describe one bug you encountered and what fixed it.]
-
-## AI assistance
-
-AI contributed substantial code generation, styling,
-debugging guidance and documentation assistance.
-I integrated and tested the project with that help.
-
-## Credits
-
-Three.js for 3D rendering.
-NASA, ESA and their credited partners for space imagery.
-Sen and NASA for the video sources linked by the project.
+HTML, CSS, JavaScript, and [Three.js](https://threejs.org/). The project uses three source files: `index.html` for the page, `style.css` for its look and animations, and `script.js` for customization, saving, and the 3D scene.
