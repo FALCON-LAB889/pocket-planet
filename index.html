@@ -1,232 +1,171 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POCKET-PLANET — Orbital Customizer Studio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="./style.css" />
-    
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
-        }
+<!DOCTYPE html>
+
+<html lang="en" >
+<meta charset="UTF-8">
+
+
+<head > 
+
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+  <title> Pocket Planet </title> 
+
+<link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
       }
-    </script>
-    <script type="module" src="./script.js"></script>
-  </head>
-  <body>
-    <div id="starfield-bg"></div>
+    }
+  </script>
+  <script src="script.js" defer></script>
 
-    <!-- App Header Nav -->
-    <header class="app-header">
-      <div class="logo-box">
-        <span class="pulse-dot"></span>
-        <a href="#home-view" class="logo-text">POCKET-PLANET</a>
+</head>
+
+<body class="intro">
+
+  <!-- shooting star-->  
+
+  <div id="star-field" aria-hidden="true">
+    <span class="shooting-star shooting-star-one"></span>
+    <span class="shooting-star shooting-star-two"></span>
+  </div>
+
+
+<header>
+<div>
+<h1> 
+Pocket Planet
+</h1>
+<p>A tiny universe, made by me.</p>
+</div>
+
+</header>
+
+<main>
+
+    <details class="flight-handbook" id="explorer-guide">
+      <summary>Flight Handbook <span>Explorer guide ↓</span></summary>
+      <div class="handbook-content">
+        <p>Welcome aboard. Here's how to explore your little universe:</p>
+        <ol>
+          <li><strong>Pick a planet.</strong> Tap an orbiting planet or its button below the solar system.</li>
+          <li><strong>Look around.</strong> Drag the 3D planet to see it from different sides.</li>
+          <li><strong>Make it yours.</strong> Change its name, colour, surface, rings, and moon.</li>
+          <li><strong>Keep your world.</strong> Tap “Save my planet” to keep your choices on this device.</li>
+        </ol>
+        <p class="handbook-tip">Tip: Move your pointer over the solar system to pause the planets while choosing. On a tablet, use the planet buttons.</p>
       </div>
-      <div class="header-actions">
-        <span class="status-badge">SYSTEM ACTIVE</span>
-        <a href="#explorer-guide" id="guide-link" class="nav-btn">User Guide ↗</a>
+    </details>
+
+    <section id="home-view" aria-label="Solar system">
+      <div class="solar-system" id="solar-system">
+        <div class="sun" aria-hidden="true"></div>
+
+        <div class="orbit orbit-rog">
+          <button class="orbit-planet" type="button" data-planet="rog" aria-label="Customize Planet Rog">
+            <span class="mini-ring ring-back"></span>
+            <span class="planet-body"></span>
+            <span class="mini-ring ring-front"></span>
+            <span class="mini-moon"></span>
+          </button>
+        </div>
+
+        <div class="orbit orbit-ember">
+          <button class="orbit-planet" type="button" data-planet="ember" aria-label="Customize Planet Ember">
+            <span class="mini-ring ring-back"></span>
+            <span class="planet-body"></span>
+            <span class="mini-ring ring-front"></span>
+            <span class="mini-moon"></span>
+          </button>
+        </div>
+
+        <div class="orbit orbit-frost">
+          <button class="orbit-planet" type="button" data-planet="frost" aria-label="Customize Planet Frost">
+            <span class="mini-ring ring-back"></span>
+            <span class="planet-body"></span>
+            <span class="mini-ring ring-front"></span>
+            <span class="mini-moon"></span>
+          </button>
+        </div>
       </div>
-    </header>
 
-    <main id="main-content">
-      <!-- Main System Dashboard -->
-      <section id="home-view">
-        <div class="hero-banner">
-          <span class="badge-tag">3D ORBITAL STUDIO</span>
-          <h1>POCKET-PLANET</h1>
-          <p>Sculpt custom planets in real-time 3D, simulate planetary rings and moons, and monitor space feeds.</p>
-        </div>
+      <p>Choose a world to make your own.</p>
+      <div class="planet-buttons">
+        <button type="button" data-choose="rog">Planet Rog</button>
+        <button type="button" data-choose="ember">Planet Ember</button>
+        <button type="button" data-choose="frost">Planet Frost</button>
+      </div>
+    </section>
 
-        <div class="dashboard-grid">
-          <!-- Solar Map Stage -->
-          <div class="custom-card system-box">
-            <div class="box-head">
-              <h2>Local System Map</h2>
-              <button type="button" id="pause-system-button" class="action-btn sm-btn">Freeze Orbits</button>
-            </div>
+    <section id="customizer" hidden aria-labelledby="planet-name">
+      <h2 id="planet-name">Planet Rog</h2>
+      <p id="planet-description">A quiet world with purple skies.</p>
 
-            <div class="solar-system" id="solar-system">
-              <button type="button" id="iss-button" class="iss-trigger">
-                <span class="radar-beacon"></span>
-                <span>ISS Feed Live</span>
-              </button>
+      <label for="name-input">Planet name</label>
+      <input id="name-input" type="text" maxlength="30" autocomplete="off">
 
-              <div class="sun-core"></div>
-              
-              <div class="orbit-ring"><div class="orbit-planet" id="rog-planet" data-planet="rog"><span class="planet-surface"></span><span class="planet-label">Planet ROG</span></div></div>
-              <div class="orbit-ring orbit-mid"><div class="orbit-planet ember" id="ember-planet" data-planet="ember"><span class="planet-surface"></span><span class="planet-label">Planet EMBER</span></div></div>
-              <div class="orbit-ring orbit-far"><div class="orbit-planet frost" id="frost-planet" data-planet="frost"><span class="planet-surface"></span><span class="planet-label">Planet FROST</span></div></div>
-            </div>
+      <div id="planet-preview" role="img" aria-label="Rotatable 3D planet preview"></div>
+      <p class="hint">Drag the planet to look around it.</p>
 
-            <div class="quick-selectors">
-              <p class="section-label">Direct Planet Target:</p>
-              <div class="btn-group">
-                <button type="button" class="planet-select-btn" data-planet="rog">ROG-01</button>
-                <button type="button" class="planet-select-btn" data-planet="ember">EMBER-02</button>
-                <button type="button" class="planet-select-btn" data-planet="frost">FROST-03</button>
-              </div>
-            </div>
-          </div>
+      <div class="controls">
+        <label for="color-input">Planet colour</label>
+        <input id="color-input" type="color" value="#8758ff">
 
-          <!-- Feature Cards -->
-          <aside class="sidebar-stack">
-            <div class="custom-card card-item">
-              <span class="card-num">01 / DESIGN</span>
-              <h3>3D Planet Studio</h3>
-              <p>Sculpt surface textures, core color tints, dust rings, and moon trajectories.</p>
-            </div>
+        <label for="surface-input">Planet style</label>
+        <select id="surface-input">
+          <option value="smooth">Smooth</option>
+          <option value="rocky">Rocky</option>
+          <option value="bands">Banded</option>
+        </select>
 
-            <div class="custom-card card-item">
-              <span class="card-num">02 / OBSERVE</span>
-              <h3>ISS Space Feed</h3>
-              <p>Watch real-time live video streams straight from the International Space Station.</p>
-              <button type="button" id="mission-iss-button" class="text-link-btn">Launch ISS Feed ↗</button>
-            </div>
+        <label class="check-row" for="ring-input">
+          Add a ring
+          <input id="ring-input" type="checkbox">
+        </label>
 
-            <div class="custom-card card-item">
-              <span class="card-num">03 / ARCHIVE</span>
-              <h3>JWST Space Shots</h3>
-              <p>View high-resolution space captures from the James Webb Space Telescope array.</p>
-              <button type="button" id="mission-telescope-button" class="text-link-btn">Open JWST Shots ↗</button>
-            </div>
-          </aside>
-        </div>
-      </section>
+        <label for="ring-style-input">Ring style</label>
+        <select id="ring-style-input">
+          <option value="saturn">Saturn bands</option>
+          <option value="thin">Thin ring</option>
+          <option value="double">Double ring</option>
+        </select>
 
-      <!-- 3D Planet Workspace -->
-      <section id="customizer" hidden>
-        <div class="editor-header">
-          <div>
-            <span class="badge-tag">DESIGN WORKSPACE</span>
-            <h2 id="planet-name">Planet ROG</h2>
-            <p id="planet-description">Sector configuration profile.</p>
-          </div>
-          <button type="button" id="back-button" class="action-btn">Return to Map ↗</button>
-        </div>
+        <label for="ring-color-input">Ring colour</label>
+        <input id="ring-color-input" type="color" value="#e8c99b">
 
-        <div class="editor-grid">
-          <!-- 3D Viewport Box -->
-          <div class="custom-card preview-card">
-            <div id="planet-preview"></div>
-            <div class="viewport-controls">
-              <button type="button" id="reset-view-button" class="action-btn sm-btn">Reset Camera</button>
-              <button type="button" id="download-planet-button" class="action-btn primary-btn sm-btn">Export Postcard</button>
-            </div>
-            <p id="download-status" class="hint-text" role="status"></p>
-          </div>
+        <label class="check-row" for="moon-input">
+          Add a moon
+          <input id="moon-input" type="checkbox">
+        </label>
 
-          <!-- Settings Sidebar -->
-          <div class="custom-card settings-card">
-            <fieldset class="control-section">
-              <legend>01 // BASE GEOLOGY</legend>
-              <label for="name-input">World Designation</label>
-              <input type="text" id="name-input" maxlength="30" placeholder="Name your world" />
+        <label for="moon-size-input">
+          Moon size <output id="moon-size-value" for="moon-size-input">40%</output>
+        </label>
+        <input id="moon-size-input" type="range" min="20" max="80" value="40">
 
-              <div class="field-row">
-                <label for="color-input">Core Color</label>
-                <input type="color" id="color-input" value="#8758ff" />
-              </div>
+        <label for="moon-color-input">Moon colour</label>
+        <input id="moon-color-input" type="color" value="#d8dbeb">
+      </div>
 
-              <label for="surface-input">Surface Texture</label>
-              <select id="surface-input">
-                <option value="rocky">Cratered Basalt</option>
-                <option value="gas">Gas Giant Swirls</option>
-                <option value="frozen">Frozen Ice Sheet</option>
-              </select>
-            </fieldset>
+      <p id="save-status" role="status" aria-live="polite"></p>
 
-            <fieldset class="control-section">
-              <legend>02 // RINGS & SATELLITES</legend>
-              <div class="field-row">
-                <span>Rings System</span>
-                <input type="checkbox" id="ring-input" />
-              </div>
-              <select id="ring-style-input">
-                <option value="bands">Multi-Band Ring</option>
-                <option value="thin">Thin Dust Band</option>
-                <option value="double">Split Double Rings</option>
-              </select>
-              <div class="field-row">
-                <label for="ring-color-input">Ring Tint</label>
-                <input type="color" id="ring-color-input" value="#e8c99b" />
-              </div>
+      <div class="actions">
+        <button id="save-button" type="button">Save my planet</button>
+        <button id="back-button" type="button">Back to solar system</button>
+      </div>
+    </section>
 
-              <div class="field-row">
-                <span>Companion Moon</span>
-                <input type="checkbox" id="moon-input" />
-              </div>
-              <div id="moon-controls">
-                <div class="field-row">
-                  <label for="moon-color-input">Moon Color</label>
-                  <input type="color" id="moon-color-input" value="#c4c9d2" />
-                </div>
-                <label for="moon-size-input">Moon Scale</label>
-                <input type="range" id="moon-size-input" min="0.6" max="1.6" step="0.1" value="1" />
-                <output id="moon-size-value">1.0x</output>
-              </div>
-            </fieldset>
+</main>
 
-            <p id="save-status" class="save-tag">LOCAL STORAGE AUTO-SAVED</p>
-          </div>
-        </div>
-      </section>
+<footer>
+</footer>
 
-      <!-- System Backup Section -->
-      <section id="universe-backup" class="custom-card backup-card">
-        <div class="backup-info">
-          <h2>POCKET-PLANET Data Management</h2>
-          <p>Export your system configuration as a JSON file or restore a past backup file.</p>
-        </div>
-        <div class="backup-actions">
-          <button type="button" id="download-backup-button" class="action-btn">Export JSON File</button>
-          <div class="restore-group">
-            <input type="file" id="restore-file-input" accept=".json" />
-            <button type="button" id="restore-backup-button" class="action-btn" disabled>Import Backup</button>
-          </div>
-        </div>
-        <p id="backup-status" class="hint-text" role="status"></p>
-      </section>
-    </main>
+</body>
 
-    <!-- Dialogs -->
-    <dialog id="iss-dialog">
-      <header class="modal-header">
-        <h3>Live ISS Broadcast</h3>
-        <form method="dialog"><button class="action-btn sm-btn">Close</button></form>
-      </header>
-      <div class="video-box"><div id="iss-video"></div></div>
-      <p id="iss-status" class="hint-text">Connecting stream...</p>
-      <select id="iss-provider">
-        <option value="sen">Sen Camera Stream</option>
-        <option value="nasa">NASA Official Stream</option>
-      </select>
-    </dialog>
 
-    <dialog id="telescope-dialog">
-      <header class="modal-header">
-        <h3>JWST Observation Gallery</h3>
-        <form method="dialog"><button class="action-btn sm-btn">Close</button></form>
-      </header>
-      <select id="telescope-target">
-        <option value="carina">Cosmic Cliffs</option>
-        <option value="pillars">Pillars of Creation</option>
-        <option value="cartwheel">Cartwheel Galaxy</option>
-        <option value="deep-field">Webb Deep Field</option>
-      </select>
-      <figure class="modal-figure">
-        <img id="telescope-image" alt="Webb Space Telescope Observation" />
-        <figcaption id="telescope-caption"></figcaption>
-      </figure>
-    </dialog>
 
-    <button type="button" id="telescope-button" class="floating-gallery-btn">JWST Gallery ↗</button>
-  </body>
 </html>
