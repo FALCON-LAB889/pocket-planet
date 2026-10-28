@@ -15,8 +15,9 @@ body {
     padding: 20px 10px; 
     background-color: #0b1735; 
     color: blue; 
-    font-family: Arial, sans-serif; 
-    text-align: center; 
+    font-family: Georgia, serif; 
+    font-style: italic;
+    text-align: center;
     isolation: isolate; 
 }
 
