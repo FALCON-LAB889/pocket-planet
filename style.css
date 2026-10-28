@@ -43,7 +43,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
     max-width: 480px; 
     margin: 25px auto; 
     padding: 16px; 
-    background-color: #121936; 
+    background-color: #121930; 
     border: 1px solid #58638e; 
 }
 
@@ -98,13 +98,13 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 
 .orbit-ember { 
     inset: 30%; 
-    animation-duration: 15s; 
+    animation-duration: 10s; 
     animation-delay: -5s; 
 }
 
 .orbit-frost { 
     inset: 4%; 
-    animation-duration: 48s; 
+    animation-duration: 30s; 
     animation-delay: -17s; 
 }
 
@@ -123,7 +123,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 
 .orbit-planet { 
     --size: 38px; 
-    --planet-color: #8758ff; 
+    --planet-color: #8758fd; 
     --planet-light: #e0c3ff; 
     --planet-dark: #24104f; 
     --ring-color: #e8c99b; 
