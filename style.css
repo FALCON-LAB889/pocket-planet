@@ -1,585 +1,380 @@
-* {
-    margin: 0;
-    padding: 0;
+/* rset stuf */
+*  { 
+    box-sizing: border-box; 
 }
 
-body{
-    background-color: #090d25;
-    color: #f5f6ff;
-    min-height: 100vh;
-    padding: 28px 16px 60px;
-    font: 16px/1.5 Arial, sans-serif;
-    text-align: center;
-    isolation: isolate;
+[hidden] { 
+    display: none !important; 
 }
 
 
-h1{
-            
-    font-family: sans-serif;
-    color: #f5f6ff;
-    font-size: clamp(2rem, 6vw, 3.2rem);
-    margin: 0;
+/* body and basic layout */
 
-} 
-
-header p {
-    margin: 2px 0 0;
-    color: #c3cbed;
+body { 
+    margin: 0; 
+    padding: 30px 15px; 
+    background-color: #0b1735; 
+    color: white; 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    isolation: isolate; 
 }
 
-button, input, select {
-    font: inherit;
+h1 { 
+    margin: 0; 
 }
 
-button {
-    cursor: pointer;
+button, input, select { 
+    font: inherit; 
 }
 
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-    outline: 2px solid #a7e9ff;
-    outline-offset: 3px;
+button { 
+    cursor: pointer; 
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { 
+    outline: 2px solid #aeeaff; 
 }
 
 
-/* flight handbook */
+/* handbook n customizr */
 
-.flight-handbook {
-    width: min(100%, 520px);
-    margin: 24px auto 0;
-    border: 1px solid #667da7;
-    border-radius: 14px;
-    background: #172447;
-    text-align: left;
-    box-shadow: 0 10px 30px #0004;
+.flight-handbook, #customizer { 
+    max-width: 480px; 
+    margin: 25px auto; 
+    padding: 16px; 
+    background-color: #121936; 
+    border: 1px solid #58638e; 
 }
 
-.flight-handbook summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    list-style: none;
-    cursor: pointer;
-    font-weight: bold;
+.flight-handbook { 
+    text-align: left; 
 }
 
-.flight-handbook summary::-webkit-details-marker {
-    display: none;
+.flight-handbook summary { 
+    cursor: pointer; 
 }
 
-.flight-handbook summary::before {
-    content: "✦";
-    color: #96dfff;
+.flight-handbook summary span { 
+    float: right; 
 }
 
-.flight-handbook summary span {
-    margin-left: auto;
-    color: #b5cce8;
-    font-size: .8rem;
-    font-weight: normal;
-}
-
-.flight-handbook[open] summary span {
-    visibility: hidden;
-}
-
-.flight-handbook summary:focus-visible {
-    outline: 2px solid #a7e9ff;
-    outline-offset: 3px;
-}
-
-.handbook-content {
-    padding: 0 18px 16px;
-    border-top: 1px solid #ffffff24;
-}
-
-.handbook-content ol {
-    padding-left: 22px;
-}
-
-.handbook-content li {
-    margin: 8px 0;
-}
-
-.handbook-tip {
-    color: #bed1ee;
-    font-size: .9rem;
+.handbook-content li { 
+    margin: 8px 0; 
 }
 
 
 /* solar system */
 
-.solar-system {
-    position: relative;
-    width: min(100%, 390px);
-    aspect-ratio: 1;
-    margin: 30px auto 20px;
+.solar-system { 
+    position: relative; 
+    width: min(100%, 360px); 
+    aspect-ratio: 1; 
+    margin: 40px auto; 
 }
 
-.sun {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(
-        circle at 35% 30%,
-        #fff7c2,
-        #ffc34e 52%,
-        #e87517 94%
-    );
-    box-shadow: 0 0 24px #ffb94f, 0 0 60px #ff9a3d77;
+.sun { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    width: 64px; 
+    height: 64px; 
+    transform: translate(-50%, -50%); 
+    border-radius: 50%; 
+    background: radial-gradient(circle at 35% 30%, #fff5b5, #ffc247, #f87919); 
+    box-shadow: 0 0 35px #ffb347aa; 
 }
 
-.orbit {
-    position: absolute;
-    border: 1px solid #ffffff38;
-    border-radius: 50%;
-    animation: orbit 24s linear infinite;
+.orbit { 
+    position: absolute; 
+    border: 1px solid #9bb5ec88; 
+    border-radius: 50%; 
+    animation: orbiting 24s linear infinite; 
 }
 
-.orbit-rog {
-    inset: 15%;
+.orbit-rog { 
+    inset: 15%; 
 }
 
-.orbit-ember {
-    inset: 30%;
-    animation-duration: 15s;
-    animation-delay: -5s;
+.orbit-ember { 
+    inset: 30%; 
+    animation-duration: 15s; 
+    animation-delay: -5s; 
 }
 
-.orbit-frost {
-    inset: 4%;
-    animation-duration: 48s;
-    animation-delay: -17s;
+.orbit-frost { 
+    inset: 4%; 
+    animation-duration: 48s; 
+    animation-delay: -17s; 
 }
 
-@keyframes orbit {
-    to {
-        transform: rotate(360deg);
-    }
+.solar-system:hover .orbit, .solar-system:focus-within .orbit { 
+    animation-play-state: paused; 
 }
 
-.solar-system:hover .orbit,
-.solar-system:focus-within .orbit {
-    animation-play-state: paused;
-}
-
-.orbit-planet {
-    --size: 38px;
-    --planet-color: #8758ff;
-    --planet-light: #d9c2ff;
-    --planet-dark: #291352;
-    --ring-color: #e8c99b;
-    --moon-color: #d8dbeb;
-    --moon-size: 8px;
-
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 58px;
-    height: 58px;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    transform: translate(50%, -50%);
-}
-
-.orbit-ember .orbit-planet {
-    --size: 29px;
-}
-
-.orbit-frost .orbit-planet {
-    --size: 33px;
-}
-
-.planet-body,
-.mini-ring,
-.mini-moon {
-    position: absolute;
-    display: block;
-}
-
-.planet-body {
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(
-        circle at 30% 26%,
-        var(--planet-light),
-        var(--planet-color) 45%,
-        var(--planet-dark) 95%
-    );
-    box-shadow: 0 0 15px var(--planet-color);
-    overflow: hidden;
-}
-
-.planet-body::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-}
-
-.orbit-planet[data-style="rocky"] .planet-body::after {
-    background:
-        radial-gradient(circle at 72% 63%, #0007 0 8%, transparent 10%),
-        radial-gradient(circle at 32% 70%, #0005 0 5%, transparent 7%),
-        radial-gradient(circle at 54% 26%, #fff3 0 5%, transparent 7%);
-}
-
-.orbit-planet[data-style="bands"] .planet-body::after {
-    background: repeating-linear-gradient(
-        175deg,
-        transparent 0 6px,
-        #fff4 7px 9px,
-        #0003 10px 12px
-    );
-}
-
-.mini-ring {
-    left: 50%;
-    top: 50%;
-    width: calc(var(--size) + 20px);
-    height: 24px;
-    border: 2px solid var(--ring-color);
-    border-radius: 50%;
-    pointer-events: none;
-    filter: drop-shadow(0 0 2px var(--ring-color));
-    transform: translate(-50%, -50%) rotate(-25deg);
-}
-
-.ring-back {
-    z-index: 0;
-}
-
-.ring-front {
-    z-index: 2;
-    border-color: transparent transparent var(--ring-color) transparent;
-}
-
-.orbit-planet:not(.has-ring) .mini-ring,
-.orbit-planet:not(.has-moon) .mini-moon {
-    display: none;
-}
-
-.orbit-planet.ring-thin .mini-ring {
-    border-width: 1px;
-}
-
-.orbit-planet.ring-double .ring-back {
-    box-shadow:
-        0 0 0 3px #090d25,
-        0 0 0 5px var(--ring-color);
-}
-
-.orbit-planet.ring-double .ring-front::after {
-    content: "";
-    position: absolute;
-    inset: -5px;
-    border: 2px solid transparent;
-    border-bottom-color: var(--ring-color);
-    border-radius: 50%;
-}
-
-.mini-moon {
-    z-index: 3;
-    top: 2px;
-    right: 0;
-    width: var(--moon-size);
-    height: var(--moon-size);
-    border-radius: 50%;
-    background: radial-gradient(
-        circle at 30% 30%,
-        #fff,
-        var(--moon-color) 55%,
-        #3a4057
-    );
-    box-shadow: 0 0 7px var(--moon-color);
-}
-
-.planet-buttons,
-.actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.planet-buttons button,
-.actions button {
-    min-height: 42px;
-    padding: 8px 16px;
-    color: #f5f6ff;
-    background: #202b52;
-    border: 1px solid #8796cb;
-    border-radius: 12px;
-}
-
-.planet-buttons button:hover,
-.actions button:hover {
-    background: #344575;
+@keyframes orbiting { 
+    to { 
+        transform: rotate(360deg); 
+    } 
 }
 
 
-/* popup bottom / customizer */
+/* planet stles n ringz */
 
-#customizer {
-    width: min(100%, 520px);
-    margin: 30px auto;
-    padding: 22px;
-    border: 1px solid #7382b1;
-    border-radius: 20px;
-    background: #121a39;
+.orbit-planet { 
+    --size: 38px; 
+    --planet-color: #8758ff; 
+    --planet-light: #e0c3ff; 
+    --planet-dark: #24104f; 
+    --ring-color: #e8c99b; 
+    --moon-color: #d8dbeb; 
+    --moon-size: 8px; 
+    position: absolute; 
+    top: 50%; 
+    right: 0; 
+    width: 58px; 
+    height: 58px; 
+    padding: 0; 
+    border: 0; 
+    border-radius: 50%; 
+    background: none; 
+    transform: translate(50%, -50%); 
 }
 
-#customizer h2 {
-    margin: 0;
+.orbit-ember .orbit-planet { 
+    --size: 28px; 
 }
 
-#planet-description {
-    margin: 4px 0 20px;
-    color: #c3cbed;
+.orbit-frost .orbit-planet { 
+    --size: 32px; 
 }
 
-#name-input {
-    display: block;
-    width: min(100%, 300px);
-    margin: 8px auto 0;
-    padding: 9px 12px;
-    background: #090d25;
-    color: white;
-    border: 1px solid #8895cc;
-    border-radius: 9px;
+.planet-body, .mini-ring, .mini-moon { 
+    position: absolute; 
+    display: block; 
 }
 
-#planet-preview {
-    width: 100%;
-    height: 300px;
-    margin: 12px auto 0;
+.planet-body { 
+    z-index: 1; 
+    top: 50%; 
+    left: 50%; 
+    width: var(--size); 
+    height: var(--size); 
+    transform: translate(-50%, -50%); 
+    border-radius: 50%; 
+    background: radial-gradient(circle at 30% 30%, var(--planet-light), var(--planet-color), var(--planet-dark)); 
+    box-shadow: 0 0 15px var(--planet-color); 
+    overflow: hidden; 
 }
 
-#planet-preview canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    touch-action: none;
+.planet-body::after { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    border-radius: 50%; 
 }
 
-.hint {
-    margin: 0 0 18px;
-    color: #bcc8e9;
-    font-size: .875rem;
+[data-style="rocky"] .planet-body::after { 
+    background: radial-gradient(circle at 70% 60%, #0008 0 8%, transparent 10%), radial-gradient(circle at 30% 70%, #0006 0 5%, transparent 7%); 
 }
 
-.controls {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(120px, 1fr);
-    align-items: center;
-    gap: 12px 16px;
-    text-align: left;
-    max-width: 390px;
-    margin: auto;
+[data-style="bands"] .planet-body::after { 
+    background: repeating-linear-gradient(175deg, transparent 0 6px, #fff5 7px 9px, #0003 10px 12px); 
 }
 
-.controls input[type="color"] {
-    width: 56px;
-    height: 38px;
-    padding: 2px;
-    background: #090d25;
-    border: 1px solid #8895cc;
-    border-radius: 8px;
+.mini-ring { 
+    top: 50%; 
+    left: 50%; 
+    width: calc(var(--size) + 20px); 
+    height: 24px; 
+    transform: translate(-50%, -50%) rotate(-25deg); 
+    border: 2px solid var(--ring-color); 
+    border-radius: 50%; 
+    pointer-events: none; 
 }
 
-.controls select {
-    min-width: 0;
-    width: 100%;
-    padding: 8px;
-    background: #090d25;
-    border: 1px solid #8895cc;
-    border-radius: 8px;
-    color: white;
+.ring-back { 
+    z-index: 0; 
 }
 
-.check-row {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.ring-front { 
+    z-index: 2; 
+    border-color: transparent transparent var(--ring-color) transparent; 
 }
 
-.controls input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+.orbit-planet:not(.has-ring) .mini-ring, .orbit-planet:not(.has-moon) .mini-moon { 
+    display: none; 
 }
 
-.controls input[type="range"] {
-    width: 100%;
-    accent-color: #9c8cff;
+.ring-thin .mini-ring { 
+    border-width: 1px; 
 }
 
-#save-status {
-    min-height: 1.5em;
-    margin: 16px 0;
-    color: #bfeaca;
+.ring-double .ring-back { 
+    box-shadow: 0 0 0 4px #090d25, 0 0 0 6px var(--ring-color); 
 }
 
-
-/* stars and starfield */
-
-#star-field {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.star {
-    position: absolute;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0 0 4px #ffffff99;
-    animation: twinkle 4s ease-in-out infinite;
-}
-
-.star.fading {
-    background: #d8c4ff;
-    animation-name: appear;
-}
-
-.star.sparkle::before,
-.star.sparkle::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #e3faff;
-    box-shadow: 0 0 5px #aee9ff;
-    transform: translate(-50%, -50%);
-}
-
-.star.sparkle::before {
-    width: 2px;
-    height: 12px;
-}
-
-.star.sparkle::after {
-    width: 12px;
-    height: 2px;
-}
-
-@keyframes twinkle {
-    0%, 100% {
-        opacity: .15;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-@keyframes appear {
-    0%, 25%, 100% {
-        opacity: 0;
-    }
-    60% {
-        opacity: .9;
-    }
+.mini-moon { 
+    z-index: 3; 
+    top: 2px; 
+    right: 0; 
+    width: var(--moon-size); 
+    height: var(--moon-size); 
+    border-radius: 50%; 
+    background-color: var(--moon-color); 
 }
 
 
-/* shoot star */
+/* buttons n inputs */
 
-.shooting-star {
-    position: absolute;
-    width: 105px;
-    height: 2px;
-    border-radius: 10px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #38bdf8,
-        #e3faff
-    );
-    filter: drop-shadow(0 0 6px #38bdf8);
-    opacity: 0;
+.planet-buttons, .actions { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 10px; 
 }
 
-.shooting-star-one {
-    top: 9%;
-    left: 8%;
-    animation: shoot-one 10s linear infinite;
+.planet-buttons button, .actions button { 
+    padding: 10px 16px; 
+    color: white; 
+    background-color: #182044; 
+    border: 1px solid #8895cc; 
 }
 
-.shooting-star-two {
-    bottom: 12%;
-    right: 8%;
-    animation: shoot-two 14s linear infinite;
-    animation-delay: -6s;
+.planet-buttons button:hover, .actions button:hover { 
+    background-color: #303d70; 
 }
 
-@keyframes shoot-one {
-    0%, 70% {
-        opacity: 0;
-        transform: translate(0, 0) rotate(35deg);
-    }
-    73% {
-        opacity: 1;
-    }
-    87%, 100% {
-        opacity: 0;
-        transform: translate(55vw, 36vw) rotate(35deg);
-    }
+#name-input { 
+    display: block; 
+    width: min(100%, 300px); 
+    margin: 10px auto; 
+    padding: 10px; 
+    color: white; 
+    background-color: #090d25; 
+    border: 1px solid #8895cc; 
 }
 
-@keyframes shoot-two {
-    0%, 75% {
-        opacity: 0;
-        transform: translate(0, 0) rotate(35deg);
-    }
-    78% {
-        opacity: 1;
-    }
-    90%, 100% {
-        opacity: 0;
-        transform: translate(-55vw, -32vw) rotate(35deg);
-    }
+#planet-preview { 
+    width: 100%; 
+    height: 280px; 
+    margin: 20px auto; 
+}
+
+#planet-preview canvas { 
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    touch-action: none; 
+}
+
+.controls { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    align-items: center; 
+    gap: 12px; 
+    max-width: 380px; 
+    margin: 20px auto; 
+    text-align: left; 
+}
+
+.controls select, .controls input[type="range"] { 
+    width: 100%; 
+}
+
+.controls select { 
+    padding: 7px; 
+    color: white; 
+    background-color: #090d25; 
+    border: 1px solid #8895cc; 
+}
+
+.check-row { 
+    grid-column: 1 / -1; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+#save-status { 
+    min-height: 1.5em; 
 }
 
 
-/* media queries */
+/* starz and shooting starz */
 
-@media (max-width: 430px) {
-    .orbit-planet {
-        width: 52px;
-        height: 52px;
-    }
-    .controls {
-        grid-template-columns: minmax(0, 1fr) minmax(90px, 1fr);
-    }
+#star-field { 
+    position: fixed; 
+    inset: 0; 
+    z-index: -1; 
+    overflow: hidden; 
+    pointer-events: none; 
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .orbit,
-    .star,
-    .shooting-star {
-        animation: none;
-    }
-    .shooting-star {
-        display: none;
-    }
-    .star {
-        opacity: .6;
-    }
+.star { 
+    position: absolute; 
+    border-radius: 50%; 
+    background-color: white; 
+    animation: twinkle 5s ease-in-out infinite; 
+}
+
+.star.fading { 
+    background-color: #d8c4ff; 
+    animation-name: appear; 
+}
+
+.star.sparkle::before, .star.sparkle::after { 
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #e3faff; 
+}
+
+.star.sparkle::before { 
+    width: 2px; 
+    height: 12px; 
+}
+
+.star.sparkle::after { 
+    width: 12px; 
+    height: 2px; 
+}
+
+@keyframes twinkle { 
+    0%, 100% { 
+        opacity: .1; 
+    } 
+    50% { 
+        opacity: 1; 
+    } 
+}
+
+@keyframes appear { 
+    0%, 25%, 100% { 
+        opacity: 0; 
+    } 
+    60% { 
+        opacity: .9; 
+    } 
+}
+
+.shooting-star { 
+    position: absolute; 
+    width: 100px; 
+    height: 2px; 
+    background: linear-gradient(90deg, transparent, #38bdf8, #dff6ff); 
+    opacity: 0; 
+}
+
+.shooting-star-one { 
+    top: 8%; 
+    left: 10%; 
+    animation: shoot-one 10s linear infinite; 
+}
+
+.shooting-star-two { 
+    bottom: 12%; 
+    right: 8%; 
+    animation: shoot-two;
 }
