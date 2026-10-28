@@ -21,7 +21,7 @@ body {
 }
 
 h1 { 
-    margin: 0; 
+    margin: 1; 
 }
 
 button, input, select { 
@@ -211,7 +211,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 }
 
 .ring-double .ring-back { 
-    box-shadow: 0 0 0 4px #090d25, 0 0 0 6px var(--ring-color); 
+    box-shadow: 0 0 0 4px #090d26, 0 0 0 6px var(--ring-color); 
 }
 
 .mini-moon { 
@@ -237,11 +237,11 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .planet-buttons button, .actions button { 
     padding: 10px 16px; 
     color: white; 
-    background-color: #00FF00; 
-    border: 1px solid #8895cc; 
+    background-color: #008000; 
+    border: 2px solid #8895cc; 
 }
 .planet-button {
-    border-radius: 980px;
+    border-radius: 998px;
 }
 .planet-buttons button:hover, .actions button:hover { 
     background-color: #87CEEB; 
@@ -370,13 +370,21 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 }
 
 .shooting-star-one { 
-    top: 8%; 
+    top: 9%; 
     left: 10%; 
-    animation: shoot-one 10s linear infinite; 
+    animation: shoot-one 9s linear infinite; 
 }
 
 .shooting-star-two { 
     bottom: 12%; 
     right: 8%; 
     animation: shoot-two;
+}
+header h1 {
+    font-size: 50px;
+}
+
+header p,
+#home-view > p {
+    color: #FFA500;
 }
