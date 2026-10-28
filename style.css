@@ -12,9 +12,9 @@
 
 body { 
     margin: 0; 
-    padding: 30px 15px; 
+    padding: 20px 10px; 
     background-color: #0b1735; 
-    color: white; 
+    color: blue; 
     font-family: Arial, sans-serif; 
     text-align: center; 
     isolation: isolate; 
@@ -40,11 +40,11 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 /* handbook n customizr */
 
 .flight-handbook, #customizer { 
-    max-width: 480px; 
-    margin: 25px auto; 
+    max-width: 400px; 
+    margin: 20px auto; 
     padding: 16px; 
-    background-color: #121930; 
-    border: 1px solid #58638e; 
+    background-color: #FFD54F; 
+    border: 2px solid #58638e; 
 }
 
 .flight-handbook { 
@@ -60,7 +60,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 }
 
 .handbook-content li { 
-    margin: 8px 0; 
+    margin: 7px 0; 
 }
 
 
@@ -237,12 +237,14 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .planet-buttons button, .actions button { 
     padding: 10px 16px; 
     color: white; 
-    background-color: #182044; 
+    background-color: #00FF00; 
     border: 1px solid #8895cc; 
 }
-
+.planet-button {
+    border-radius: 980px;
+}
 .planet-buttons button:hover, .actions button:hover { 
-    background-color: #303d70; 
+    background-color: #87CEEB; 
 }
 
 #name-input { 
